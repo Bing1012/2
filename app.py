@@ -271,7 +271,7 @@ def main(start_data, end_data):
 
         ###### CHART: DOCUMENT TONE DISTRIBUTION #####
         # add overall average
-        dist_chart = alt.Chart(df_company, title="文章正负消息面分布").transform_density(
+        dist_chart = alt.Chart(df_company, title="文章正负消息面分布密集度").transform_density(
                 density='Tone',
                 as_=["Tone", "density"]
             ).mark_area(opacity=0.5,color="purple").encode(
@@ -290,7 +290,7 @@ def main(start_data, end_data):
 
         ###### CHART: SCATTER OF ARTICLES OVER TIME #####
         # st.markdown("---")
-        scatter = alt.Chart(df_company, title="文章正负消息面分布情况").mark_circle().encode(
+        scatter = alt.Chart(df_company, title="文章正负消息面分布总览").mark_circle().encode(
             x="NegativeTone:Q",
             y="PositiveTone:Q",
             size="WordCount:Q",
@@ -315,8 +315,8 @@ def main(start_data, end_data):
 
         ###### CHART: 3D EMBEDDING WITH NEIGHBORS ######
         st.markdown("---")
-        color_f = lambda f: f"Company: {company.title()}" if f == company else (
-            "关联企业" if f in neighbors.values else "Other Company")
+        color_f = lambda f: f"本企业: {company.title()}" if f == company else (
+            "关联企业" if f in neighbors.values else "其他企业")
         embeddings["colorCode"] = embeddings.company.apply(color_f)
         point_colors = {company: violet, "Connected Company": fuchsia,
                         "Other Company": "lightgrey"}
@@ -349,10 +349,10 @@ def main(start_data, end_data):
             "Neighbor": neighbors,
             "Confidence": company_df[[f"n{i}_conf" for i in
                                       range(num_neighbors)]].values[0]})
-        conf_plot = alt.Chart(neighbor_conf, title="Connected Companies"
+        conf_plot = alt.Chart(neighbor_conf, title="关联企业"
                               ).mark_bar().encode(
             x="Confidence:Q",
-            y=alt.Y("Neighbor:N", sort="-x"),
+            y=alt.Y("关联企业名称:N", sort="-x"),
             tooltip=["Neighbor", alt.Tooltip("Confidence", format=".3f")],
             color=alt.Color("Confidence:Q", scale=alt.Scale(), legend=None)
         ).properties(

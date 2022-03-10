@@ -275,8 +275,8 @@ def main(start_data, end_data):
                 density='Tone',
                 as_=["Tone", "density"]
             ).mark_area(opacity=0.5,color="purple").encode(
-                    x=alt.X('正负消息情况:Q', scale=alt.Scale(domain=(-10, 10))),
-                    y='密集程度:Q',
+                    x=alt.X('Tone:Q', scale=alt.Scale(domain=(-10, 10))),
+                    y='density:Q',
                     tooltip=[alt.Tooltip("Tone", format=".3f"),
                              alt.Tooltip("density:Q", format=".4f")]
                 ).properties(
@@ -290,11 +290,11 @@ def main(start_data, end_data):
 
         ###### CHART: SCATTER OF ARTICLES OVER TIME #####
         # st.markdown("---")
-        scatter = alt.Chart(df_company, title="文章政府消息面分布情况").mark_circle().encode(
-            x="负面消息:Q",
-            y="正面信息:Q",
-            size="字数:Q",
-            color=alt.Color("极性:Q", scale=alt.Scale()),
+        scatter = alt.Chart(df_company, title="文章正负消息面分布情况").mark_circle().encode(
+            x="NegativeTone:Q",
+            y="PositiveTone:Q",
+            size="WordCount:Q",
+            color=alt.Color("Polarity:Q", scale=alt.Scale()),
             tooltip=[alt.Tooltip("Polarity", format=".3f"),
                      alt.Tooltip("NegativeTone", format=".3f"),
                      alt.Tooltip("PositiveTone", format=".3f"),
@@ -316,7 +316,7 @@ def main(start_data, end_data):
         ###### CHART: 3D EMBEDDING WITH NEIGHBORS ######
         st.markdown("---")
         color_f = lambda f: f"Company: {company.title()}" if f == company else (
-            "Connected Company" if f in neighbors.values else "Other Company")
+            "关联企业" if f in neighbors.values else "Other Company")
         embeddings["colorCode"] = embeddings.company.apply(color_f)
         point_colors = {company: violet, "Connected Company": fuchsia,
                         "Other Company": "lightgrey"}
@@ -330,7 +330,7 @@ def main(start_data, end_data):
         fig_3d.update_layout(legend={"orientation": "h",
                                      "yanchor": "bottom",
                                      "title": None},
-                             title={"text": "<b>Company Connections</b>",
+                             title={"text": "<b>企业之间的相互联系</b>",
                                     "x": 0.5, "y": 0.9,
                                     "xanchor": "center",
                                     "yanchor": "top",

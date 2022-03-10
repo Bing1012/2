@@ -3,7 +3,6 @@
 <br></br>
 **Demonstrating the power of Streamlit.** [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/hannahawalsh/esg_ai/main/app.py)  
 <br></br>
-![Example of app](./raw/ScreenCapture2.gif)
 
 
 
@@ -41,13 +40,13 @@ ESG scoring is tricky. Research analysts leverage many sources to manually come 
 ---  
 We aim to make ESG scoring an automatic, data-driven process. We leverage the [GDelt](https://www.gdeltproject.org/) news source to ingest historical and real-time news articles, tweets, and other digital publications that we classify into the three ESG categories. 
 <br></br>
-![Example of app](./raw/ScreenCapture1.gif)
+
 <br></br>
-![Example of app](./raw/ScreenCapture4.gif)
+
 <br></br>
 We then perform scoring based on sentiment, which can be adjusted based on given windows of time. Additionally, we leverage the deep learning algorithm, **Node2Vec** to embed the connections on a graph from news article mentions. This allows us to find better suggested competitors, allowing us to compare ESG results across companies. 
 <br></br>
-![Example of app](./raw/ScreenCapture5.gif)  
+
 
 <br></br>
 ### Examples  of ESG found in News
@@ -60,7 +59,7 @@ We then perform scoring based on sentiment, which can be adjusted based on given
 
 #### G: Intuit (INTU):
 “It has achieved a 40% diverse board, one of the highest levels in corporate America today. Intuit shows accountability by tying its executives' incentive compensation to revenue and non-GAAP (Generally Accepted Accounting Principles) operating income, as well as to the company's overall performance on annual goals related to employees, customers, partners, and stockholders.”   
-[source](https://www.fool.com/investing/stock-market/types-of-stocks/esg-investing/)
+
 
 <br></br>
 ## App Installation
@@ -92,14 +91,10 @@ streamlit run app.py
 ```
 You should be navigated to a localhost link where you will see the application running.
 
-![Example of app](./raw/ScreenCapture3.gif)
-
-Thanks to Streamlit Sharing, we have also been able to host the app for free! You can find that [**HERE**](https://share.streamlit.io/hannahawalsh/esg_ai/main/app.py)!
+Thanks to Streamlit Sharing, we have also been able to host the app for free! You can find that [**HERE**](https://share.streamlit.io/Bing1012/2/main/app.py)!
 
 <br></br>
 ## Note
-We originally built our code in [this other repo](https://github.com/adamFinastra/ESGAI), but due to Streamlit Sharing being in beta mode, it was forced to be moved to this Github account, which has permissions.
-
 
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
+

@@ -378,8 +378,8 @@ if __name__ == "__main__":
     else:
         main(start_data, end_data)
     alt.themes.enable("default")
-  
-    
-
+      
+[theme]
+backgroundColor="#00FF7F"
 
 # one_month, ten_days

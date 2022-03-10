@@ -273,7 +273,7 @@ def main(start_data, end_data):
         # add overall average
         dist_chart = alt.Chart(df_company, title="文章正负消息面分布").transform_density(
                 density='Tone',
-                as_=["Tone", "density"]
+                as_=["正负消息情况", "密集程度"]
             ).mark_area(opacity=0.5,color="purple").encode(
                     x=alt.X('Tone:Q', scale=alt.Scale(domain=(-10, 10))),
                     y='density:Q',

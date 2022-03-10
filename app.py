@@ -154,7 +154,7 @@ def main(start_data, end_data):
 
         ###### DISPLAY DATA ######
         URL_Expander = st.expander(f"查看 {company.title()} 企业的数据:", True)
-        URL_Expander.write(f"### {len(df_company):,d} Matching Articles for " +
+        URL_Expander.write(f"### {len(df_company):,d} 篇匹配的文章————" +
                            company.title())
         display_cols = ["DATE", "SourceCommonName", "Tone", "Polarity",
                         "NegativeTone", "PositiveTone"]  #  "WordCount"
@@ -204,7 +204,7 @@ def main(start_data, end_data):
             if line_metric == "Overall Score":
                 line_metric = "Score"
                 tone_df["WHO"] = company.title()
-                ind_tone_df["WHO"] = "Industry Average"
+                ind_tone_df["WHO"] = "行业平均"
                 plot_df = pd.concat([tone_df, ind_tone_df]).reset_index(drop=True)
             else:
                 df1 = df_company.groupby("DATE")[line_metric].mean(
@@ -212,11 +212,11 @@ def main(start_data, end_data):
                 df2 = filter_on_date(df_data.groupby("DATE")[line_metric].mean(
                     ).reset_index(), start, end)
                 df1["WHO"] = company.title()
-                df2["WHO"] = "Industry Average"
+                df2["WHO"] = "行业平均"
                 plot_df = pd.concat([df1, df2]).reset_index(drop=True)
-            metric_chart = alt.Chart(plot_df, title="Trends Over Time"
+            metric_chart = alt.Chart(plot_df, title="随时间变化的趋势"
                                      ).mark_line().encode(
-                x=alt.X("yearmonthdate(DATE):O", title="DATE"),
+                x=alt.X("yearmonthdate(DATE):O", title="时间"),
                 y=alt.Y(f"{line_metric}:Q", scale=alt.Scale(type="linear")),
                 color=alt.Color("WHO", legend=None),
                 strokeDash=alt.StrokeDash("WHO", sort=None,
@@ -258,7 +258,7 @@ def main(start_data, end_data):
                                    },
                             legend={"title": None, "yanchor": "middle",
                                     "orientation": "h"},
-                            title={"text": "<b>ESG Scores</b>",
+                            title={"text": "<b>ESG 评分</b>",
                                    "x": 0.5, "y": 0.8875,
                                    "xanchor": "center",
                                    "yanchor": "top",
@@ -271,8 +271,7 @@ def main(start_data, end_data):
 
         ###### CHART: DOCUMENT TONE DISTRIBUTION #####
         # add overall average
-        dist_chart = alt.Chart(df_company, title="Document Tone "
-                               "Distribution").transform_density(
+        dist_chart = alt.Chart(df_company, title="文章正负消息面分布").transform_density(
                 density='Tone',
                 as_=["Tone", "density"]
             ).mark_area(opacity=0.5,color="purple").encode(

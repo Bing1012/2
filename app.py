@@ -185,8 +185,8 @@ def main(start_data, end_data):
             ind_esg_df["WHO"] = "行业平均"
             esg_plot_df = pd.concat([esg_df, ind_esg_df]
                                     ).reset_index(drop=True)
-            esg_plot_df.replace({"E_score": "Environment", "S_score": "Social",
-                                 "G_score": "Governance"}, inplace=True)
+            esg_plot_df.replace({"E_score": "E", "S_score": "S",
+                                 "G_score": "G"}, inplace=True)
 
             metric_chart = alt.Chart(esg_plot_df, title="Trends Over Time"
                                        ).mark_line().encode(

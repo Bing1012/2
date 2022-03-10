@@ -273,10 +273,10 @@ def main(start_data, end_data):
         # add overall average
         dist_chart = alt.Chart(df_company, title="文章正负消息面分布").transform_density(
                 density='Tone',
-                as_=["正负消息情况", "密集程度"]
+                as_=["Tone", "density"]
             ).mark_area(opacity=0.5,color="purple").encode(
-                    x=alt.X('Tone:Q', scale=alt.Scale(domain=(-10, 10))),
-                    y='density:Q',
+                    x=alt.X('正负消息情况:Q', scale=alt.Scale(domain=(-10, 10))),
+                    y='密集程度:Q',
                     tooltip=[alt.Tooltip("Tone", format=".3f"),
                              alt.Tooltip("density:Q", format=".4f")]
                 ).properties(
@@ -290,11 +290,11 @@ def main(start_data, end_data):
 
         ###### CHART: SCATTER OF ARTICLES OVER TIME #####
         # st.markdown("---")
-        scatter = alt.Chart(df_company, title="Article Tone").mark_circle().encode(
-            x="NegativeTone:Q",
-            y="PositiveTone:Q",
-            size="WordCount:Q",
-            color=alt.Color("Polarity:Q", scale=alt.Scale()),
+        scatter = alt.Chart(df_company, title="文章政府消息面分布情况").mark_circle().encode(
+            x="负面消息:Q",
+            y="正面信息:Q",
+            size="字数:Q",
+            color=alt.Color("极性:Q", scale=alt.Scale()),
             tooltip=[alt.Tooltip("Polarity", format=".3f"),
                      alt.Tooltip("NegativeTone", format=".3f"),
                      alt.Tooltip("PositiveTone", format=".3f"),

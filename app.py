@@ -172,7 +172,7 @@ def main(start_data, end_data):
 
         ###### CHART: METRIC OVER TIME ######
         st.markdown("---")
-        col1, col2 = st.beta_columns((1, 3))
+        col1, col2 = st.columns((1, 3))
 
         metric_options = ["Tone", "NegativeTone", "PositiveTone", "Polarity",
                           "ActivityDensity", "WordCount", "Overall Score",
@@ -235,7 +235,7 @@ def main(start_data, end_data):
 
 
         ###### CHART: ESG RADAR ######
-        col1, col2 = st.beta_columns((1, 2))
+        col1, col2 = st.columns((1, 2))
         avg_esg = data["ESG"]
         avg_esg.rename(columns={"Unnamed: 0": "Type"}, inplace=True)
         avg_esg.replace({"T": "Overall", "E": "Environment",

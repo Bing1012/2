@@ -148,7 +148,7 @@ def main(start_data, end_data):
         ###### PUBLISHER SELECT BOX ######
         publishers = df_company.SourceCommonName.sort_values().unique().tolist()
         publishers.insert(0, "all")
-        publisher = pub.selectbox("Select Publisher", publishers)
+        publisher = pub.selectbox("选择信息运营商", publishers)
         df_company = filter_publisher(df_company, publisher)
 
 

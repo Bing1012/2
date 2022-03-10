@@ -378,9 +378,7 @@ if __name__ == "__main__":
     else:
         main(start_data, end_data)
     alt.themes.enable("default")
-    body{
-        background-color: #12D8FA
-    }
+    body{background-color: #12D8FA}
     
 
 

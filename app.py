@@ -153,7 +153,7 @@ def main(start_data, end_data):
 
 
         ###### DISPLAY DATA ######
-        URL_Expander = st.beta_expander(f"查看 {company.title()} 企业的数据:", True)
+        URL_Expander = st.expander(f"查看 {company.title()} 企业的数据:", True)
         URL_Expander.write(f"### {len(df_company):,d} Matching Articles for " +
                            company.title())
         display_cols = ["DATE", "SourceCommonName", "Tone", "Polarity",
@@ -161,7 +161,7 @@ def main(start_data, end_data):
         URL_Expander.write(df_company[display_cols])
 
         ####
-        URL_Expander.write(f"#### Sample Articles")
+        URL_Expander.write(f"#### 案例推文")
         link_df = df_company[["DATE", "URL"]].head(3).copy()
         # link_df["URL"] = link_df["URL"].apply(lambda R: f"[{R}]({R})")
         link_df["ARTICLE"] = link_df.URL.apply(get_clickable_name)
@@ -177,7 +177,7 @@ def main(start_data, end_data):
         metric_options = ["Tone", "NegativeTone", "PositiveTone", "Polarity",
                           "ActivityDensity", "WordCount", "Overall Score",
                           "ESG Scores"]
-        line_metric = col1.radio("Choose Metric", options=metric_options)
+        line_metric = col1.radio("选择度量标准", options=metric_options)
 
         if line_metric == "ESG Scores":
             # Get ESG scores
@@ -190,7 +190,7 @@ def main(start_data, end_data):
 
             metric_chart = alt.Chart(esg_plot_df, title="Trends Over Time"
                                        ).mark_line().encode(
-                x=alt.X("yearmonthdate(DATE):O", title="DATE"),
+                x=alt.X("yearmonthdate(DATE):O", title="时间"),
                 y=alt.Y("Score:Q"),
                 color=alt.Color("ESG", sort=None, legend=alt.Legend(
                     title=None, orient="top")),

@@ -363,6 +363,7 @@ def main(start_data, end_data):
 
 if __name__ == "__main__":
     args = sys.argv
+    st.backgroundColor="#00FF7F"
     if len(args) != 3:
         start_data = "dec30"
         end_data = "jan12"
@@ -378,7 +379,7 @@ if __name__ == "__main__":
     else:
         main(start_data, end_data)
     alt.themes.enable("default")
-      
-st.backgroundColor="#00FF7F"
+  
+
 
 # one_month, ten_days

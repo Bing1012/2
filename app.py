@@ -82,18 +82,18 @@ def main(start_data, end_data):
 
     ###### SET UP PAGE ######
     icon_path = os.path.join(".", "raw", "esg_ai_logo.png")
-    st.set_page_config(page_title="ESG AI", page_icon=icon_path,
+    st.set_page_config(page_title="智能 ESG", page_icon=icon_path,
                        layout='centered', initial_sidebar_state="collapsed")
     _, logo, _ = st.columns(3)
     logo.image(icon_path, width=200)
     style = ("text-align:center; padding: 0px; font-family: arial black;, "
              "font-size: 400%")
-    title = f"<h1 style='{style}'>ESG<sup>AI</sup></h1><br><br>"
+    title = f"<h1 style='{style}'>智能<sup>ESG</sup></h1><br><br>"
     st.write(title, unsafe_allow_html=True)
 
 
     ###### LOAD DATA ######
-    with st.spinner(text="Fetching Data..."):
+    with st.spinner(text="加载中..."):
         data, companies = load_data(start_data, end_data)
     df_conn = data["conn"]
     df_data = data["data"]

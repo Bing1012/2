@@ -30,7 +30,7 @@ def finastra_theme():
     ###### CONFIGURATION ######
     config = {"config": {
         
-            "background": '#00FF7F',
+            "background": '#FFFFFF',
 
             "title": {
                 "anchor": "middle",

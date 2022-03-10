@@ -88,7 +88,7 @@ def main(start_data, end_data):
     logo.image(icon_path, width=200)
     style = ("text-align:center; padding: 0px; font-family: arial black;, "
              "font-size: 200%")
-    title = f"<h1 style='{style}'>智能<sup>ESG</sup></h1><br><br>"
+    title = f"<h1 style='{style}'>智能ESG<sup> </sup></h1><br><br>"
     st.write(title, unsafe_allow_html=True)
 
 
@@ -101,19 +101,19 @@ def main(start_data, end_data):
 
 
     ####### CREATE SIDEBAR CATEGORY FILTER######
-    st.sidebar.title("Filter Options")
+    st.sidebar.title("过滤器选项")
     date_place = st.sidebar.empty()
-    esg_categories = st.sidebar.multiselect("Select News Categories",
+    esg_categories = st.sidebar.multiselect("选择新闻类别",
                                             ["E", "S", "G"], ["E", "S", "G"])
     pub = st.sidebar.empty()
-    num_neighbors = st.sidebar.slider("Number of Connections", 1, 20, value=8)
+    num_neighbors = st.sidebar.slider("关联数量", 1, 20, value=8)
 
 
 
 
 
     ###### RUN COMPUTATIONS WHEN A COMPANY IS SELECTED ######
-    company = st.selectbox("Select a Company to Analyze", companies)
+    company = st.selectbox("选择需要分析的公司", companies)
     if company and company != "Select a Company":
         ###### FILTER ######
         df_company = df_data[df_data.Organization == company]
@@ -129,7 +129,7 @@ def main(start_data, end_data):
         ###### DATE WIDGET ######
         start = df_company.DATE.min()
         end = df_company.DATE.max()
-        selected_dates = date_place.date_input("Select a Date Range",
+        selected_dates = date_place.date_input("选择一个时间范围",
             value=[start, end], min_value=start, max_value=end, key=None)
         time.sleep(0.8)  #Allow user some time to select the two dates -- hacky :D
         start, end = selected_dates

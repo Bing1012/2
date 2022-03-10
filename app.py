@@ -352,7 +352,7 @@ def main(start_data, end_data):
         conf_plot = alt.Chart(neighbor_conf, title="关联企业"
                               ).mark_bar().encode(
             x="Confidence:Q",
-            y=alt.Y("关联企业名称:N", sort="-x"),
+            y=alt.Y("Neighbor:N", sort="-x"),
             tooltip=["Neighbor", alt.Tooltip("Confidence", format=".3f")],
             color=alt.Color("Confidence:Q", scale=alt.Scale(), legend=None)
         ).properties(

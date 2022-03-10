@@ -153,7 +153,7 @@ def main(start_data, end_data):
 
 
         ###### DISPLAY DATA ######
-        URL_Expander = st.beta_expander(f"View {company.title()} Data:", True)
+        URL_Expander = st.beta_expander(f"查看 {company.title()} 企业的数据:", True)
         URL_Expander.write(f"### {len(df_company):,d} Matching Articles for " +
                            company.title())
         display_cols = ["DATE", "SourceCommonName", "Tone", "Polarity",
